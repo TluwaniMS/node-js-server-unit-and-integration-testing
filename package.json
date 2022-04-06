@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/TluwaniMS/node-js-server-unit-and-integration-testing/issues"
   },
-  "homepage": "https://github.com/TluwaniMS/node-js-server-unit-and-integration-testing#readme"
+  "homepage": "https://github.com/TluwaniMS/node-js-server-unit-and-integration-testing#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.10",
+    "morgan": "^1.10.0"
+  }
 }
