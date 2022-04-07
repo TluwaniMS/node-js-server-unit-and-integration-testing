@@ -1,15 +1,46 @@
 const { SchoolModel } = require("../database-models/School");
 
-const createSchool = async () => {};
+const createSchool = async (schoolInformation) => {
+  await SchoolModel.create({
+    name: schoolInformation.name,
+    district: schoolInformation.district,
+    level: schoolInformation.level
+  });
 
-const createMultipleSchools = async () => {};
+  return `Operation completed successfully.`;
+};
 
-const getAllSchools = async () => {};
+const getAllSchools = async () => {
+  const schools = await SchoolModel.find({});
 
-const getSchoolById = async () => {};
+  return schools;
+};
 
-const updateSchoolInformation = async () => {};
+const getSchoolById = async (schoolId) => {
+  const school = await SchoolModel.findOne({ _id: schoolId });
 
-const deleteSchool = async () => {};
+  return school;
+};
 
-module.exports = {};
+const updateSchoolInformationById = async (schoolId, schoolInformation) => {
+  await SchoolModel.updateOne(
+    { _id: schoolId },
+    { name: schoolInformation.name, district: schoolInformation.district, level: schoolInformation.level }
+  );
+
+  return `Operation completed successfully.`;
+};
+
+const deleteSchoolById = async (schoolId) => {
+  await SchoolModel.deleteOne({ _id: schoolId });
+
+  return `Operation completed successfully.`;
+};
+
+module.exports = {
+  createSchool,
+  getAllSchools,
+  getSchoolById,
+  updateSchoolInformationById,
+  deleteSchoolById
+};
