@@ -1,10 +1,10 @@
 const { SchoolModel } = require("../database-models/School");
 
-const createSchool = async (schoolInformation) => {
+const createSchool = async ({ name, district, level }) => {
   await SchoolModel.create({
-    name: schoolInformation.name,
-    district: schoolInformation.district,
-    level: schoolInformation.level
+    name: name,
+    district: district,
+    level: level
   });
 
   return `Operation completed successfully.`;
@@ -22,11 +22,8 @@ const getSchoolById = async (schoolId) => {
   return school;
 };
 
-const updateSchoolInformationById = async (schoolId, schoolInformation) => {
-  await SchoolModel.updateOne(
-    { _id: schoolId },
-    { name: schoolInformation.name, district: schoolInformation.district, level: schoolInformation.level }
-  );
+const updateSchoolInformationById = async ({ schoolId, name, level, district }) => {
+  await SchoolModel.updateOne({ _id: schoolId }, { name: name, district: district, level: level });
 
   return `Operation completed successfully.`;
 };
