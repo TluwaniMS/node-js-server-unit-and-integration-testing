@@ -1,13 +1,13 @@
 const { StudentModel } = require("../database-models/Student");
 
-const createStudent = async (studentInformation) => {
+const createStudent = async ({ name, surname, gender, grade, dateOfBirth, sports }) => {
   await StudentModel.create({
-    name: studentInformation.name,
-    surname: studentInformation.surname,
-    gender: studentInformation.gender,
-    grade: studentInformation.grade,
-    dateOfBirth: studentInformation.dateOfBirth,
-    sports: studentInformation.sports
+    name: name,
+    surname: surname,
+    gender: gender,
+    grade: grade,
+    dateOfBirth: dateOfBirth,
+    sports: sports
   });
 
   return `Operation completed successfully.`;
@@ -25,16 +25,16 @@ const getStudentById = async (studentId) => {
   return student;
 };
 
-const updateStudentInformationById = async (studentId, studentInformation) => {
+const updateStudentInformationById = async ({ studentId, name, surname, gender, grade, dateOfBirth, sports }) => {
   await StudentModel.updateOne(
     { _id: studentId },
     {
-      name: studentInformation.name,
-      surname: studentInformation.surname,
-      gender: studentInformation.gender,
-      grade: studentInformation.grade,
-      dateOfBirth: studentInformation.dateOfBirth,
-      sports: studentInformation.sports
+      name: name,
+      surname: surname,
+      gender: gender,
+      grade: grade,
+      dateOfBirth: dateOfBirth,
+      sports: sports
     }
   );
 
