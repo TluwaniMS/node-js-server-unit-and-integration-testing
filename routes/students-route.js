@@ -9,14 +9,13 @@ const {
 } = require("../database-queries/StudentDBQueries");
 
 router.post("/create-student", async (req, res) => {
-  const { name, surname, gender, grade, dateOfBirth, sports } = req.body;
+  const { name, surname, gender, grade, sports } = req.body;
 
   const studentCreationResult = createStudent({
     name: name,
     surname: surname,
     gender: gender,
     grade: grade,
-    dateOfBirth: dateOfBirth,
     sports: sports
   });
 
@@ -39,7 +38,7 @@ router.get("/get-student-by-id/:studentId", async (req, res) => {
 
 router.put("/update-student-information-by-id/:studentId", async (req, res) => {
   const { studentId } = req.params;
-  const { name, surname, gender, grade, dateOfBirth, sports } = req.body;
+  const { name, surname, gender, grade, sports } = req.body;
 
   const studentUpdateResult = await updateStudentInformationById({
     studentId: studentId,
@@ -47,7 +46,6 @@ router.put("/update-student-information-by-id/:studentId", async (req, res) => {
     surname: surname,
     gender: gender,
     grade: grade,
-    dateOfBirth: dateOfBirth,
     sports: sports
   });
 

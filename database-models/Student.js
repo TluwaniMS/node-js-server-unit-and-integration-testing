@@ -5,7 +5,6 @@ const StudentSchema = new Schema({
   surname: { type: String, required: true },
   gender: { type: String, enum: ["Male", "Female"], required: true },
   grade: { type: String, required: true },
-  dateOfBirth: { type: String, required: true },
   sports: [{ type: String, required: true }]
 });
 
