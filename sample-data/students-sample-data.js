@@ -225,3 +225,5 @@ const Students = [
     gender: "Male"
   }
 ];
+
+module.exports = { Students };
