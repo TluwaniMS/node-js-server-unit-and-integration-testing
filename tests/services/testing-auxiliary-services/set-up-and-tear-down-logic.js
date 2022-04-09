@@ -1,4 +1,4 @@
-const { connection } = require("mongoose");
+const { connection, disconnect } = require("mongoose");
 const { createDatabaseConnectionAndPopulateDatabase } = require("./database-config-service");
 
 const runSetupAndTearDownscripts = async () => {
@@ -8,6 +8,7 @@ const runSetupAndTearDownscripts = async () => {
 
   afterAll(async () => {
     await connection.db.dropDatabase();
+    await disconnect();
   });
 };
 

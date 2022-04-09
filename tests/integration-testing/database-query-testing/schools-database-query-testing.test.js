@@ -5,7 +5,9 @@ const {
   updateSchoolInformationById,
   deleteSchoolById
 } = require("../../../database-queries/SchoolDBQueries");
-const {} = require('../../services/testing-auxiliary-services/')
+const { runSetupAndTearDownscripts } = require("../../services/testing-auxiliary-services/set-up-and-tear-down-logic");
+
+runSetupAndTearDownscripts();
 
 describe("Testing school database queries:", () => {
   it("It should create a school in the database", async () => {
