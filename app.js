@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const app = express();
 const studentsroute = require("./routes/students-route");
 const schoolsRoute = require("./routes/schools-route");
-dotenv.config();
+dotenv.config({ path: "./.env" });
 
 app.use(cors());
 app.use(express.json());

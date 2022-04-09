@@ -15,7 +15,7 @@ describe("Testing the schools end-points", () => {
   });
 
   describe("Testing the get school by id end-point", () => {
-    it("", async () => {
+    it("It should return a status 200 response", async () => {
       expect(1).toEqual(1);
     });
   });
