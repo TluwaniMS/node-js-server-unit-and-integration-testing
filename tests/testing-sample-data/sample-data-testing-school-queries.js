@@ -16,4 +16,17 @@ const sampleSchoolForUpdateTests = {
 
 const sampleSchoolUpdatedName = "Moria High School";
 
-module.exports = { sampleSchool, sampleSchoolForUpdateTests, sampleSchoolUpdatedName };
+const sampleSchoolToBeUsedForByIdQueries = {
+  _id: "624eddc76022740b286b6be1",
+  name: "Kgwadu Primary School",
+  district: "Capricorn District Municipality",
+  level: "Primary",
+  students: ["624edb425712f22ee59fd988", "624edb425712f22ee59fd98a"]
+};
+
+module.exports = {
+  sampleSchool,
+  sampleSchoolForUpdateTests,
+  sampleSchoolUpdatedName,
+  sampleSchoolToBeUsedForByIdQueries
+};

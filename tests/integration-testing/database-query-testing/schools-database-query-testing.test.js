@@ -9,7 +9,10 @@ const {
   deleteSchoolByName,
   getSchoolByName
 } = require("../../services/testing-test-services-for-database-queries/schools-test-database-queries-services");
-const { sampleSchool } = require("../../testing-sample-data/sample-data-testing-school-queries");
+const {
+  sampleSchool,
+  sampleSchoolToBeUsedForByIdQueries
+} = require("../../testing-sample-data/sample-data-testing-school-queries");
 const { defaultSchoolObjectMatcher } = require("../../testing-object-matchers/schools-object-property-matchers");
 const { runSetupAndTearDownscripts } = require("../../services/testing-auxiliary-services/set-up-and-tear-down-logic");
 
@@ -50,9 +53,17 @@ describe("Testing school database queries:", () => {
     });
   });
 
-  describe("Testing get school in database by _id database query", () => {
-    it("It should get a school in the database that matches the specified _id", async () => {
-      expect(1).toEqual(1);
+  describe("Testing get school by _id database query", () => {
+    it("It should return an object that matches the specified object properties", async () => {
+      const school = await getSchoolById(sampleSchoolToBeUsedForByIdQueries._id);
+
+      expect(school).toEqual(expect.objectContaining(defaultSchoolObjectMatcher));
+    });
+
+    it("It should have the same name os that of the sample data object passed", async () => {
+      const school = await getSchoolById(sampleSchoolToBeUsedForByIdQueries._id);
+
+      expect(school).toHaveProperty("name", sampleSchoolToBeUsedForByIdQueries.name);
     });
   });
 
