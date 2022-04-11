@@ -1,6 +1,6 @@
 const { runSetupAndTearDownscripts } = require("../../services/testing-auxiliary-services/set-up-and-tear-down-logic");
-const schoolTests = require("./schools-database-query-testing");
-const studentTests = require("./students-database-query-testing");
+const schoolTests = require("../database-query-tests/schools-database-query-testing");
+const studentTests = require("../database-query-tests/students-database-query-testing");
 
 runSetupAndTearDownscripts();
 schoolTests();
