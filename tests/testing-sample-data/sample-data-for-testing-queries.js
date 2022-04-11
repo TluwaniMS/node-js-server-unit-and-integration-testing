@@ -4,6 +4,11 @@ const sampleSchool = {
   level: "Secondary"
 };
 
-const sampleStudent = {};
+const sampleStudent = {
+  name: "Medi",
+  surname: "Kakholo",
+  gender: "Male",
+  sports: ["Soccer"]
+};
 
 module.exports = { sampleSchool, sampleStudent };
