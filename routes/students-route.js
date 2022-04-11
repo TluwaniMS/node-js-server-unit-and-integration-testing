@@ -9,14 +9,15 @@ const {
 } = require("../database-queries/StudentDBQueries");
 
 router.post("/create-student", async (req, res) => {
-  const { name, surname, gender, grade, sports } = req.body;
+  const { name, surname, gender, grade, sports, age } = req.body;
 
   const studentCreationResult = createStudent({
     name: name,
     surname: surname,
     gender: gender,
     grade: grade,
-    sports: sports
+    sports: sports,
+    age: age
   });
 
   res.status(200).send({ data: studentCreationResult });

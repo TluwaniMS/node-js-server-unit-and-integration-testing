@@ -17,12 +17,19 @@ const {
 } = require("../../services/testing-test-services-for-database-queries/student-test-database-queries-services");
 const { runSetupAndTearDownscripts } = require("../../services/testing-auxiliary-services/set-up-and-tear-down-logic");
 
-runSetupAndTearDownscripts();
-
 describe("Testing student database queries:", () => {
+
   describe("Testing database query for creating a student", () => {
-    it("It should create a student in the database", async () => {
-      expect(1).toEqual(1);
+    afterAll(async () => {
+      await deleteStudentByName(sampleStudent.name);
+    });
+
+    it("It should return an array with 7 students", async () => {
+      await createStudent(sampleStudent);
+
+      const students = await getAllStudents();
+
+      expect(students).toEqual(7);
     });
   });
 

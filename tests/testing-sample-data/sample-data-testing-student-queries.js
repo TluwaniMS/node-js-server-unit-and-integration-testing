@@ -2,6 +2,8 @@ const sampleStudent = {
   name: "Medi",
   surname: "Kakholo",
   gender: "Male",
+  grade: 10,
+  age: 16,
   sports: ["Soccer"]
 };
 

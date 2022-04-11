@@ -1,12 +1,13 @@
 const { StudentModel } = require("../database-models/Student");
 
-const createStudent = async ({ name, surname, gender, grade, sports }) => {
+const createStudent = async ({ name, surname, gender, grade, sports, age }) => {
   await StudentModel.create({
     name: name,
     surname: surname,
     gender: gender,
     grade: grade,
-    sports: sports
+    sports: sports,
+    age: age
   });
 
   return `Operation completed successfully.`;

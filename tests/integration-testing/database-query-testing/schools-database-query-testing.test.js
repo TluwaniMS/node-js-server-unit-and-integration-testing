@@ -18,9 +18,10 @@ const {
 const { defaultSchoolObjectMatcher } = require("../../testing-object-matchers/schools-object-property-matchers");
 const { runSetupAndTearDownscripts } = require("../../services/testing-auxiliary-services/set-up-and-tear-down-logic");
 
-runSetupAndTearDownscripts();
+runSetupAndTearDownscripts()
 
 describe("Testing school database queries:", () => {
+
   describe("Testing database query for creating a school", () => {
     afterAll(async () => {
       await deleteSchoolByName(sampleSchool.name);
