@@ -81,9 +81,13 @@ describe("Testing school database queries:", () => {
     });
   });
 
-  describe("", () => {
-    it("It should delete the school in the database that that matches the specified _id", async () => {
-      expect(1).toEqual(1);
+  describe("Testing delete school by _id database query", () => {
+    it("It should return an array with 1 school object", async () => {
+      await deleteSchoolById(sampleSchoolToBeUsedForByIdQueries._id);
+
+      const schools = await getAllSchools();
+
+      expect(schools).toHaveLength(1);
     });
   });
 });
