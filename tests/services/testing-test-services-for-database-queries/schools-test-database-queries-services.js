@@ -1,7 +1,7 @@
 const { SchoolModel } = require("../../../database-models/School");
 
 const deleteSchoolByName = async (name) => {
-  await SchoolModel.deleteOne({ name: SchoolModel });
+  await SchoolModel.deleteOne({ name: name });
 
   console.log(`School deleted by name successfully.`);
 };

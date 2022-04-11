@@ -10,13 +10,18 @@ const {
   getSchoolByName
 } = require("../../services/testing-test-services-for-database-queries/schools-test-database-queries-services");
 const { sampleSchool } = require("../../testing-sample-data/sample-data-testing-school-queries");
+const { defaultSchoolObjectMatcher } = require("../../testing-object-matchers/schools-object-property-matchers");
 const { runSetupAndTearDownscripts } = require("../../services/testing-auxiliary-services/set-up-and-tear-down-logic");
 
 runSetupAndTearDownscripts();
 
 describe("Testing school database queries:", () => {
   describe("Testing database query for creating a school", () => {
-    it("It should return an array with 3 elements", async () => {
+    afterAll(async () => {
+      await deleteSchoolByName(sampleSchool.name);
+    });
+
+    it("It should return an array with 3 schools", async () => {
       await createSchool(sampleSchool);
 
       const schools = await getAllSchools();
@@ -29,15 +34,19 @@ describe("Testing school database queries:", () => {
 
       expect(school).toMatchObject(sampleSchool);
     });
-
-    afterAll(async () => {
-      await deleteSchoolByName(sampleSchool.name);
-    });
   });
 
   describe("Testing get all schools in database, database query", () => {
-    it("It should get all the existing schools in the database", async () => {
-      expect(1).toEqual(1);
+    it("It should return an array with 2 school objects", async () => {
+      const schools = await getAllSchools();
+
+      expect(schools).toHaveLength(2);
+    });
+
+    it("It should return an array with objects that match the specified object", async () => {
+      const schools = await getAllSchools();
+
+      expect(schools).toEqual(expect.arrayContaining([expect.objectContaining(defaultSchoolObjectMatcher)]));
     });
   });
 
