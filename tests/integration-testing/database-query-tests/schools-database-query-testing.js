@@ -16,7 +16,6 @@ const {
   sampleSchoolUpdatedName
 } = require("../../testing-sample-data/sample-data-testing-school-queries");
 const { defaultSchoolObjectMatcher } = require("../../testing-object-matchers/schools-object-property-matchers");
-const { runSetupAndTearDownscripts } = require("../../services/testing-auxiliary-services/set-up-and-tear-down-logic");
 
 module.exports = () =>
   describe("Testing school database queries:", () => {
@@ -36,7 +35,7 @@ module.exports = () =>
       it("It should return an object that matches the specified object", async () => {
         const school = await getSchoolByName(sampleSchool.name);
 
-        expect(school).toMatchObject(sampleSchool);
+        expect(school).toHaveProperty("district", sampleSchool.district);
       });
     });
 

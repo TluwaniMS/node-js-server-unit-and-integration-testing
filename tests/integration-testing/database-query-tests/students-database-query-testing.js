@@ -15,7 +15,6 @@ const {
   deleteStudentByName,
   getStudentByName
 } = require("../../services/testing-test-services-for-database-queries/student-test-database-queries-services");
-const { runSetupAndTearDownscripts } = require("../../services/testing-auxiliary-services/set-up-and-tear-down-logic");
 
 module.exports = () =>
   describe("Testing student database queries:", () => {
@@ -30,6 +29,12 @@ module.exports = () =>
         const students = await getAllStudents();
 
         expect(students).toHaveLength(6);
+      });
+
+      it("It should return an object that matches the specified object", async () => {
+        const student = await getStudentByName(sampleStudent.name);
+
+        expect(student).toHaveProperty("surname", sampleStudent.surname);
       });
     });
 
