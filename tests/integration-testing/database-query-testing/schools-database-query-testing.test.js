@@ -9,7 +9,7 @@ const {
   deleteSchoolByName,
   getSchoolByName
 } = require("../../services/testing-test-services-for-database-queries/schools-test-database-queries-services");
-const { sampleSchool } = require("../../testing-sample-data/sample-data-for-testing-queries");
+const { sampleSchool } = require("../../testing-sample-data/sample-data-testing-school-queries");
 const { runSetupAndTearDownscripts } = require("../../services/testing-auxiliary-services/set-up-and-tear-down-logic");
 
 runSetupAndTearDownscripts();
