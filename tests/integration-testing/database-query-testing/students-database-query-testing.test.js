@@ -16,31 +16,31 @@ const { runSetupAndTearDownscripts } = require("../../services/testing-auxiliary
 runSetupAndTearDownscripts();
 
 describe("Testing student database queries:", () => {
-  describe("", () => {
+  describe("Testing database query for creating a student", () => {
     it("It should create a student in the database", async () => {
       expect(1).toEqual(1);
     });
   });
 
-  describe("", () => {
+  describe("Testing get all students in database, database query", () => {
     it("It should get all the existing students in the database", async () => {
       expect(1).toEqual(1);
     });
   });
 
-  describe("", () => {
+  describe("Testing get student by _id database query", () => {
     it("It should get a student in the database that matches the specified _id", async () => {
       expect(1).toEqual(1);
     });
   });
 
-  describe("", () => {
+  describe("Testing update student by _id database query", () => {
     it("It should update the student in the database that matches the specified _id", async () => {
       expect(1).toEqual(1);
     });
   });
 
-  describe("", () => {
+  describe("Testing delete student by _id database query", () => {
     it("It should delete the student in the database that that matches the specified _id", async () => {
       expect(1).toEqual(1);
     });
