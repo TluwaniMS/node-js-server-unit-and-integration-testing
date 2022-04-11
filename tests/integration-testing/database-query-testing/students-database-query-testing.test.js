@@ -11,6 +11,10 @@ const {
   sampleStudentToBeUsedForByIdQueries,
   sampleStudentUpdatedSurname
 } = require("../../testing-sample-data/sample-data-testing-student-queries");
+const {
+  deleteStudentByName,
+  getStudentByName
+} = require("../../services/testing-test-services-for-database-queries/student-test-database-queries-services");
 const { runSetupAndTearDownscripts } = require("../../services/testing-auxiliary-services/set-up-and-tear-down-logic");
 
 runSetupAndTearDownscripts();
