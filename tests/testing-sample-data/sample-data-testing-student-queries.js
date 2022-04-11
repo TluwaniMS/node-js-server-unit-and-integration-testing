@@ -19,4 +19,19 @@ const sampleStudentForUpdateTest = {
 
 const sampleStudentUpdatedSurname = "Marimba";
 
-module.exports = { sampleStudent, sampleStudentForUpdateTest, sampleStudentUpdatedSurname };
+const sampleStudentToBeUsedForByIdQueries = {
+  _id: "624edb425712f22ee59fd989",
+  name: "Refilwe",
+  surname: "Phago",
+  grade: 9,
+  age: 15,
+  sports: ["Soccer"],
+  gender: "Female"
+};
+
+module.exports = {
+  sampleStudent,
+  sampleStudentForUpdateTest,
+  sampleStudentUpdatedSurname,
+  sampleStudentToBeUsedForByIdQueries
+};
