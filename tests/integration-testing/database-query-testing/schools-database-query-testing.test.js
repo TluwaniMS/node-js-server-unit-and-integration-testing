@@ -12,7 +12,8 @@ const {
 const {
   sampleSchool,
   sampleSchoolToBeUsedForByIdQueries,
-  sampleSchoolForUpdateTests
+  sampleSchoolForUpdateTests,
+  sampleSchoolUpdatedName
 } = require("../../testing-sample-data/sample-data-testing-school-queries");
 const { defaultSchoolObjectMatcher } = require("../../testing-object-matchers/schools-object-property-matchers");
 const { runSetupAndTearDownscripts } = require("../../services/testing-auxiliary-services/set-up-and-tear-down-logic");
@@ -77,7 +78,7 @@ describe("Testing school database queries:", () => {
 
       const school = await getSchoolById(sampleSchoolForUpdateTests._id);
 
-      expect(school).toHaveProperty("name", sampleSchoolForUpdateTests.data.name);
+      expect(school).toHaveProperty("name", sampleSchoolUpdatedName);
     });
   });
 
