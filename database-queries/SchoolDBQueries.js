@@ -11,13 +11,13 @@ const createSchool = async ({ name, district, level }) => {
 };
 
 const getAllSchools = async () => {
-  const schools = await SchoolModel.find({});
+  const schools = await SchoolModel.find({}).populate("students");
 
   return schools;
 };
 
 const getSchoolById = async (schoolId) => {
-  const school = await SchoolModel.findOne({ _id: schoolId });
+  const school = await SchoolModel.findOne({ _id: schoolId }).populate("students");
 
   return school;
 };
