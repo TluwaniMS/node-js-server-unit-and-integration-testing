@@ -6,6 +6,7 @@ const {
   sampleSchoolForUpdateTests,
   sampleSchoolUpdatedName
 } = require("../../testing-sample-data/sample-data-testing-school-queries");
+const { defaultSchoolObjectMatcher } = require("../../testing-object-matchers/schools-object-property-matchers");
 
 module.exports = () =>
   describe("Testing the schools end-points", () => {
@@ -33,9 +34,27 @@ module.exports = () =>
 
     describe("Testing the get school by id end-point", () => {
       it("It should return a status 200 response", async () => {
-        const response = await request(app).get("/api/schools/get-school-by-id");
+        const response = await request(app).get(
+          `/api/schools/get-school-by-id/${sampleSchoolToBeUsedForByIdQueries._id}`
+        );
 
-        expect(1).toEqual(1);
+        expect(response.status).toEqual(200);
+      });
+
+      it("It should return an object thats has the same name as that of the sample data object passed", async () => {
+        const response = await request(app).get(
+          `/api/schools/get-school-by-id/${sampleSchoolToBeUsedForByIdQueries._id}`
+        );
+
+        expect(response.body.data).toHaveProperty("name", sampleSchoolToBeUsedForByIdQueries.name);
+      });
+
+      it("It should return an object that matches the specified object properties", async () => {
+        const response = await request(app).get(
+          `/api/schools/get-school-by-id/${sampleSchoolToBeUsedForByIdQueries._id}`
+        );
+
+        expect(response.body.data).toEqual(expect.objectContaining(defaultSchoolObjectMatcher));
       });
     });
 

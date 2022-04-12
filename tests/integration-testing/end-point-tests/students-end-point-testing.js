@@ -6,6 +6,7 @@ const {
   sampleStudentToBeUsedForByIdQueries,
   sampleStudentUpdatedSurname
 } = require("../../testing-sample-data/sample-data-testing-student-queries");
+const { defaultStudentMatcher } = require("../../testing-object-matchers/students-object-property-matchers");
 
 module.exports = () =>
   describe("Testing the students end-points", () => {
@@ -33,9 +34,27 @@ module.exports = () =>
 
     describe("Testing the get student by id end-point", () => {
       it("It should return a status 200 response", async () => {
-        const response = await request(app).get("/api/students/get-student-by-id/");
+        const response = await request(app).get(
+          `/api/students/get-student-by-id/${sampleStudentToBeUsedForByIdQueries._id}`
+        );
 
-        expect(1).toEqual(1);
+        expect(response.status).toEqual(200);
+      });
+
+      it("It should return an object that matches the specified object properties", async () => {
+        const response = await request(app).get(
+          `/api/students/get-student-by-id/${sampleStudentToBeUsedForByIdQueries._id}`
+        );
+
+        expect(response.body.data).toEqual(expect.objectContaining(defaultStudentMatcher));
+      });
+
+      it("It should return an object thats has the same name as that of the sample data object passed", async () => {
+        const response = await request(app).get(
+          `/api/students/get-student-by-id/${sampleStudentToBeUsedForByIdQueries._id}`
+        );
+
+        expect(response.body.data).toHaveProperty("name", sampleStudentToBeUsedForByIdQueries.name);
       });
     });
 

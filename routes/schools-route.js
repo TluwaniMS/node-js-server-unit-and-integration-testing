@@ -24,7 +24,7 @@ router.get("/get-all-schools", async (req, res) => {
 router.get("/get-school-by-id/:schoolId", async (req, res) => {
   const { schoolId } = req.params;
 
-  const school = getSchoolById(schoolId);
+  const school = await getSchoolById(schoolId);
 
   res.status(200).send({ data: school });
 });
