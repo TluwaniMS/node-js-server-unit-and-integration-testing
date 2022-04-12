@@ -54,8 +54,16 @@ module.exports = () =>
     });
 
     describe("Testing get student by _id database query", () => {
-      it("It should get a student in the database that matches the specified _id", async () => {
-        expect(1).toEqual(1);
+      it("It should return an object that matches the specified object properties", async () => {
+        const student = await getStudentById(sampleStudentToBeUsedForByIdQueries._id);
+
+        expect(student).toEqual(expect.objectContaining(defaultStudentMatcher));
+      });
+
+      it("It should return an object thats has the same name as that of the sample data object passed", async () => {
+        const student = await getStudentById(sampleStudentToBeUsedForByIdQueries._id);
+
+        expect(student).toHaveProperty("name", sampleStudentToBeUsedForByIdQueries.name);
       });
     });
 
