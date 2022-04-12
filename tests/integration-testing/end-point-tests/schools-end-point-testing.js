@@ -60,9 +60,17 @@ module.exports = () =>
 
     describe("Testing the update school information by id end-point", () => {
       it("It should return a status 200 response", async () => {
-        const response = await request(app).get("/api/schools/update-school-information-by-id");
+        const response = await request(app)
+          .put(`/api/schools/update-school-information-by-id/${sampleSchoolForUpdateTests._id}`)
+          .send(sampleSchoolForUpdateTests.data);
 
-        expect(1).toEqual(1);
+        expect(response.status).toEqual(200);
+      });
+
+      it("It should return an object thats has the same name as that of the sample data object passed", async () => {
+        const response = await request(app).get(`/api/schools/get-school-by-id/${sampleSchoolForUpdateTests._id}`);
+
+        expect(response.body.data).toHaveProperty("name", sampleSchoolUpdatedName);
       });
     });
 

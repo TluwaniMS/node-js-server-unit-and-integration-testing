@@ -81,7 +81,7 @@ module.exports = () =>
     });
 
     describe("Testing delete student by _id database query", () => {
-      it("It should return an array with 1 school object", async () => {
+      it("It should return an array with 4 student objects", async () => {
         await deleteStudentById(sampleStudentToBeUsedForByIdQueries._id);
 
         const students = await getAllStudents();
