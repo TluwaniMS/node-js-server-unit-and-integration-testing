@@ -19,7 +19,7 @@ const unknownRequests = (req, res, next) => {
 const errorResponse = (error, req, res, next) => {
   if (error.status) {
     console.log(error);
-    res.status(error.status).send({ message: `${error.message}` });
+    res.status(error.status).send({ message: error.message });
   } else {
     console.log(error);
     res.status(500).send({ message: ErrorMessages.internalServerErrorMessage });
