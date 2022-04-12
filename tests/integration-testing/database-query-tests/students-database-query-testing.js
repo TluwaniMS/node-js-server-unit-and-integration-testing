@@ -15,6 +15,7 @@ const {
   deleteStudentByName,
   getStudentByName
 } = require("../../services/testing-test-services-for-database-queries/student-test-database-queries-services");
+const { defaultStudentMatcher } = require("../../testing-object-matchers/students-object-property-matchers");
 
 module.exports = () =>
   describe("Testing student database queries:", () => {
@@ -39,8 +40,16 @@ module.exports = () =>
     });
 
     describe("Testing get all students in database, database query", () => {
-      it("It should get all the existing students in the database", async () => {
-        expect(1).toEqual(1);
+      it("It should return an array with 2 school objects", async () => {
+        const students = await getAllStudents();
+
+        expect(students).toHaveLength(5);
+      });
+
+      it("It should return an array with objects that match the specified object", async () => {
+        const students = await getAllStudents();
+
+        expect(students).toEqual(expect.arrayContaining([expect.objectContaining(defaultStudentMatcher)]));
       });
     });
 
