@@ -1,3 +1,5 @@
+const { ErrorMessages } = require("../enumerators/error-messages");
+
 const errorHandler = (handler) => {
   return async (req, res, next) => {
     try {
@@ -9,7 +11,7 @@ const errorHandler = (handler) => {
 };
 
 const unknownRequests = (req, res, next) => {
-  const error = new Error("Route requested not found");
+  const error = new Error(ErrorMessages.badRequestErrorMessage);
   error.status = 404;
   next(error);
 };
@@ -20,7 +22,7 @@ const errorResponse = (error, req, res, next) => {
     res.status(error.status).send({ message: `${error.message}... :(` });
   } else {
     console.log(error);
-    res.status(500).send({ message: "Internal server error, please try again later... :(" });
+    res.status(500).send({ message: ErrorMessages.internalServerErrorMessage });
   }
 };
 
