@@ -68,8 +68,15 @@ module.exports = () =>
     });
 
     describe("Testing update student by _id database query", () => {
-      it("It should update the student in the database that matches the specified _id", async () => {
-        expect(1).toEqual(1);
+      it("It should return an object that has the same name as that of the sample data object passed", async () => {
+        await updateStudentInformationById({
+          studentId: sampleStudentForUpdateTest._id,
+          ...sampleStudentForUpdateTest.data
+        });
+
+        const student = await getStudentById(sampleStudentForUpdateTest._id);
+
+        expect(student).toHaveProperty("surname", sampleStudentUpdatedSurname);
       });
     });
 

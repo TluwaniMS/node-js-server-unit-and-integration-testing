@@ -25,7 +25,7 @@ const getStudentById = async (studentId) => {
   return student;
 };
 
-const updateStudentInformationById = async ({ studentId, name, surname, gender, grade, sports }) => {
+const updateStudentInformationById = async ({ studentId, name, surname, gender, grade, sports, age }) => {
   await StudentModel.updateOne(
     { _id: studentId },
     {
@@ -33,7 +33,8 @@ const updateStudentInformationById = async ({ studentId, name, surname, gender, 
       surname: surname,
       gender: gender,
       grade: grade,
-      sports: sports
+      sports: sports,
+      age: age
     }
   );
 
