@@ -7,14 +7,26 @@ const {
   sampleStudentUpdatedSurname
 } = require("../../testing-sample-data/sample-data-testing-student-queries");
 const { defaultStudentMatcher } = require("../../testing-object-matchers/students-object-property-matchers");
+const {
+  deleteStudentByName
+} = require("../../services/testing-test-services-for-database-queries/student-test-database-queries-services");
 
 module.exports = () =>
   describe("Testing the students end-points", () => {
     describe("Testing the create student end-point", () => {
+      afterAll(async () => {
+        await deleteStudentByName(sampleStudent.name);
+      });
       it("It should return a status 200 response", async () => {
-        const response = await request(app).get("/api/students/create-student");
+        const response = await request(app).post("/api/students/create-student").send(sampleStudent);
 
-        expect(1).toEqual(1);
+        expect(response.status).toEqual(200);
+      });
+
+      it("It should return an array with 6 students", async () => {
+        const response = await request(app).get("/api/students/get-all-students");
+
+        expect(response.body.data).toHaveLength(6);
       });
     });
 
@@ -25,7 +37,7 @@ module.exports = () =>
         expect(response.status).toEqual(200);
       });
 
-      it("It should return an array with 6 students", async () => {
+      it("It should return an array with 5 students", async () => {
         const response = await request(app).get("/api/students/get-all-students");
 
         expect(response.body.data).toHaveLength(5);
@@ -76,9 +88,17 @@ module.exports = () =>
 
     describe("Testing the delete student by id end-point", () => {
       it("It should return a status 200 response", async () => {
-        const response = await request(app).get("/api/students/delete-student-by-id");
+        const response = await request(app).delete(
+          `/api/students/delete-student-by-id/${sampleStudentToBeUsedForByIdQueries._id}`
+        );
 
-        expect(1).toEqual(1);
+        expect(response.status).toEqual(200);
+      });
+
+      it("It should return an array with 6 students", async () => {
+        const response = await request(app).get("/api/students/get-all-students");
+
+        expect(response.body.data).toHaveLength(4);
       });
     });
   });

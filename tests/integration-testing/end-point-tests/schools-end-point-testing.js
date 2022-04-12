@@ -7,14 +7,26 @@ const {
   sampleSchoolUpdatedName
 } = require("../../testing-sample-data/sample-data-testing-school-queries");
 const { defaultSchoolObjectMatcher } = require("../../testing-object-matchers/schools-object-property-matchers");
+const {
+  deleteSchoolByName
+} = require("../../services/testing-test-services-for-database-queries/schools-test-database-queries-services");
 
 module.exports = () =>
   describe("Testing the schools end-points", () => {
     describe("Testing the create school end-point", () => {
+      afterAll(async () => {
+        await deleteSchoolByName(sampleSchool.name);
+      });
       it("It should return a status 200 response", async () => {
-        const response = await request(app).get("/api/schools/create-school");
+        const response = await request(app).post("/api/schools/create-school").send(sampleSchool);
 
-        expect(1).toEqual(1);
+        expect(response.status).toEqual(200);
+      });
+
+      it("It should return an array with 3 schools", async () => {
+        const response = await request(app).get("/api/schools/get-all-schools");
+
+        expect(response.body.data).toHaveLength(3);
       });
     });
 
@@ -76,9 +88,17 @@ module.exports = () =>
 
     describe("Testing the delete school by id end-point", () => {
       it("It should return a status 200 response", async () => {
-        const response = request(app).get("/api/schools/delete-school-by-id");
+        const response = await request(app).delete(
+          `/api/schools/delete-school-by-id/${sampleSchoolToBeUsedForByIdQueries._id}`
+        );
 
-        expect(1).toEqual(1);
+        expect(response.status).toEqual(200);
+      });
+
+      it("It should return an array with 1 school", async () => {
+        const response = await request(app).get("/api/schools/get-all-schools");
+
+        expect(response.body.data).toHaveLength(1);
       });
     });
   });
