@@ -81,8 +81,12 @@ module.exports = () =>
     });
 
     describe("Testing delete student by _id database query", () => {
-      it("It should delete the student in the database that that matches the specified _id", async () => {
-        expect(1).toEqual(1);
+      it("It should return an array with 1 school object", async () => {
+        await deleteStudentById(sampleStudentToBeUsedForByIdQueries._id);
+
+        const students = await getAllStudents();
+
+        expect(students).toHaveLength(4);
       });
     });
   });
