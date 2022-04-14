@@ -15,4 +15,10 @@ describe("Testing school services business logic", () => {
 
     expect(requiredSchoolFields).toEqual(expect.objectContaining(detailedSchoolInformationObjectMatcher));
   });
+
+  it("It should return an object thats has the same name as that specified", () => {
+    const schoolWithAddedField = addTotalStudentsFieldToSchoolObject(sampleSchoolTobeUsedFoBusinessLogicUnitTests, 3);
+
+    expect(schoolWithAddedField).toHaveProperty("totalStudents", 3);
+  });
 });
