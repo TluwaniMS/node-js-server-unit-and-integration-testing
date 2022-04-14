@@ -8,6 +8,11 @@ const {
   deleteSchoolById,
   createSchool
 } = require("../database-queries/SchoolDBQueries");
+const {
+  calculateTotalStudentsInSchool,
+  returnRequiredSchoolFields,
+  addTotalStudentsFieldToSchoolObject
+} = require("../services/school-services");
 
 router.post(
   "/create-school",
@@ -36,6 +41,23 @@ router.get(
     const school = await getSchoolById(schoolId);
 
     res.status(200).send({ data: school });
+  })
+);
+
+router.get(
+  "/get-detailed-school-information-by-id/:schoolId",
+  errorHandler(async (req, res) => {
+    const { schoolId } = req.params;
+
+    const school = await getSchoolById(schoolId);
+
+    const totalStudentsInSchool = calculateTotalStudentsInSchool(school.students);
+
+    const requiredSchoolFields = returnRequiredSchoolFields(school);
+
+    const formattedSchoolInformation = addTotalStudentsFieldToSchoolObject(requiredSchoolFields, totalStudentsInSchool);
+
+    res.status(200).send({ data: formattedSchoolInformation });
   })
 );
 

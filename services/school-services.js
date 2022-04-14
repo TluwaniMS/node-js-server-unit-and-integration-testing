@@ -1,4 +1,4 @@
-const calculateTotalStudentsInschool = (studentsArray) => {
+const calculateTotalStudentsInSchool = (studentsArray) => {
   return studentsArray.length;
 };
 
@@ -12,4 +12,4 @@ const addTotalStudentsFieldToSchoolObject = (schoolObject, totalStudents) => {
   return schoolObject;
 };
 
-module.exports = { calculateTotalStudentsInschool, returnRequiredSchoolFields, addTotalStudentsFieldToSchoolObject };
+module.exports = { calculateTotalStudentsInSchool, returnRequiredSchoolFields, addTotalStudentsFieldToSchoolObject };
