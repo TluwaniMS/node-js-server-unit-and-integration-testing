@@ -8,11 +8,8 @@ const {
   deleteSchoolById,
   createSchool
 } = require("../database-queries/SchoolDBQueries");
-const {
-  calculateTotalStudentsInSchool,
-  returnRequiredSchoolFields,
-  addTotalStudentsFieldToSchoolObject
-} = require("../services/school-services");
+const { returnRequiredSchoolFields, addTotalStudentsFieldToSchoolObject } = require("../services/school-services");
+const { getArraySize } = require("../services/shared-services");
 
 router.post(
   "/create-school",
@@ -51,7 +48,7 @@ router.get(
 
     const school = await getSchoolById(schoolId);
 
-    const totalStudentsInSchool = calculateTotalStudentsInSchool(school.students);
+    const totalStudentsInSchool = getArraySize(school.students);
 
     const requiredSchoolFields = returnRequiredSchoolFields(school);
 

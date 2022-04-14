@@ -1,7 +1,3 @@
-const calculateTotalSportsByStudent = (sportsArray) => {
-  return sportsArray.length;
-};
-
 const returnRequiredStudentFields = ({ _id, name, surname, gender, grade, age }) => {
   return { _id, name, surname, gender, grade, age };
 };
@@ -13,7 +9,6 @@ const addTotalSportsPlayedFieldToStudentObject = (studentobject, totalSportsPlay
 };
 
 module.exports = {
-  calculateTotalSportsByStudent,
   returnRequiredStudentFields,
   addTotalSportsPlayedFieldToStudentObject
 };

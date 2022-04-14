@@ -1,7 +1,3 @@
-const calculateTotalStudentsInSchool = (studentsArray) => {
-  return studentsArray.length;
-};
-
 const returnRequiredSchoolFields = ({ _id, name, district, level }) => {
   return { _id, name, district, level };
 };
@@ -12,4 +8,4 @@ const addTotalStudentsFieldToSchoolObject = (schoolObject, totalStudents) => {
   return schoolObject;
 };
 
-module.exports = { calculateTotalStudentsInSchool, returnRequiredSchoolFields, addTotalStudentsFieldToSchoolObject };
+module.exports = { returnRequiredSchoolFields, addTotalStudentsFieldToSchoolObject };

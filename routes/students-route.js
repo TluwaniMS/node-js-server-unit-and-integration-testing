@@ -9,10 +9,10 @@ const {
   deleteStudentById
 } = require("../database-queries/StudentDBQueries");
 const {
-  calculateTotalSportsByStudent,
   returnRequiredStudentFields,
   addTotalSportsPlayedFieldToStudentObject
 } = require("../services/student-services");
+const { getArraySize } = require("../services/shared-services");
 
 router.post(
   "/create-student",
@@ -59,7 +59,7 @@ router.get(
 
     const student = await getStudentById(studentId);
 
-    const totalSportsPlayedbyStudent = calculateTotalSportsByStudent(student.sports);
+    const totalSportsPlayedbyStudent = getArraySize(student.sports);
 
     const requiredStudentFields = returnRequiredStudentFields(student);
 
