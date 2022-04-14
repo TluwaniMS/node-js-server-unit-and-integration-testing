@@ -7,7 +7,6 @@
     "test:endPoint": "jest -c jest.config.endPoint.js",
     "test:database": "jest -c jest.config.database.js",
     "test:unit-business": "jest -c jest.config.unit-business.js",
-    "test:unit-test": "jest -c jest.config.unit-test.js",
     "dev": "nodemon server.js"
   },
   "repository": {
