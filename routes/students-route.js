@@ -8,6 +8,11 @@ const {
   updateStudentInformationById,
   deleteStudentById
 } = require("../database-queries/StudentDBQueries");
+const {
+  calculateTotalSportsByStudent,
+  returnRequiredStudentFields,
+  addTotalSportsPlayedFieldToStudentObject
+} = require("../services/student-services");
 
 router.post(
   "/create-student",
@@ -44,6 +49,26 @@ router.get(
     const student = await getStudentById(studentId);
 
     res.status(200).send({ data: student });
+  })
+);
+
+router.get(
+  "/get-detailed-student-information-by-id/:studentId",
+  errorHandler(async (req, res) => {
+    const { studentId } = req.params;
+
+    const student = await getStudentById(studentId);
+
+    const totalSportsPlayedbyStudent = calculateTotalSportsByStudent(student.sports);
+
+    const requiredStudentFields = returnRequiredStudentFields(student);
+
+    const formattedStudentObject = addTotalSportsPlayedFieldToStudentObject(
+      requiredStudentFields,
+      totalSportsPlayedbyStudent
+    );
+
+    res.status(200).send({ data: formattedStudentObject });
   })
 );
 
