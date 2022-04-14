@@ -7,4 +7,6 @@ const defaultStudentMatcher = {
   sports: expect.any(Array)
 };
 
+const detailedStudentInformationObjectMatcher = {};
+
 module.exports = { defaultStudentMatcher };

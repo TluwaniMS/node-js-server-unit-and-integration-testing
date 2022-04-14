@@ -5,4 +5,6 @@ const defaultSchoolObjectMatcher = {
   students: expect.any(Array)
 };
 
+const detailedSchoolInformationObjectMatcher = {};
+
 module.exports = { defaultSchoolObjectMatcher };
