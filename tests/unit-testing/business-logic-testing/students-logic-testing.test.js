@@ -7,7 +7,7 @@ const {
 } = require("../../testing-object-matchers/students-object-property-matchers");
 const {
   sampleStudentTobeUsedFoBusinessLogicUnitTests
-} = require("../../testing-sample-data/sample-student-data-for-testing-business-logic");
+} = require("../unit-testing-sample-data/sample-student-data-for-testing-business-logic");
 
 describe("Testing student services business logic", () => {
   it("It should return an object that matches the specified object", () => {

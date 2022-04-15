@@ -10,7 +10,7 @@ const {
   sampleStudentForUpdateTest,
   sampleStudentToBeUsedForByIdQueries,
   sampleStudentUpdatedSurname
-} = require("../../testing-sample-data/sample-data-testing-student-queries");
+} = require("../integration-testing-sample-data/sample-data-testing-student-queries");
 const {
   deleteStudentByName,
   getStudentByName

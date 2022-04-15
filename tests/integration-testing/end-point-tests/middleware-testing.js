@@ -1,6 +1,6 @@
 const { app } = require("../../../app");
 const request = require("supertest");
-const { sampleSchoolToBeUsedForByIdQueries } = require("../../testing-sample-data/sample-data-testing-school-queries");
+const { sampleSchoolToBeUsedForByIdQueries } = require("../integration-testing-sample-data/sample-data-testing-school-queries");
 const { ErrorMessages } = require("../../../enumerators/error-messages");
 
 module.exports = () =>

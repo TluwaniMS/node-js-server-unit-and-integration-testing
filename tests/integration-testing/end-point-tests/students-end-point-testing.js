@@ -5,7 +5,7 @@ const {
   sampleStudentForUpdateTest,
   sampleStudentToBeUsedForByIdQueries,
   sampleStudentUpdatedSurname
-} = require("../../testing-sample-data/sample-data-testing-student-queries");
+} = require("../integration-testing-sample-data/sample-data-testing-student-queries");
 const { defaultStudentMatcher } = require("../../testing-object-matchers/students-object-property-matchers");
 const {
   deleteStudentByName

@@ -14,7 +14,7 @@ const {
   sampleSchoolToBeUsedForByIdQueries,
   sampleSchoolForUpdateTests,
   sampleSchoolUpdatedName
-} = require("../../testing-sample-data/sample-data-testing-school-queries");
+} = require("../integration-testing-sample-data/sample-data-testing-school-queries");
 const { defaultSchoolObjectMatcher } = require("../../testing-object-matchers/schools-object-property-matchers");
 
 module.exports = () =>

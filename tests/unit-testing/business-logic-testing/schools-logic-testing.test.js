@@ -4,7 +4,7 @@ const {
 } = require("../../../services/school-services");
 const {
   sampleSchoolTobeUsedFoBusinessLogicUnitTests
-} = require("../../testing-sample-data/sample-school-data-for-testing-business-logic");
+} = require("../unit-testing-sample-data/sample-school-data-for-testing-business-logic");
 const {
   detailedSchoolInformationObjectMatcher
 } = require("../../testing-object-matchers/schools-object-property-matchers");

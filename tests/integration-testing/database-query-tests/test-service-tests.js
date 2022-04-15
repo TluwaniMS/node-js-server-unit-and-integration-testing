@@ -8,8 +8,8 @@ const {
   getStudentByName,
   deleteStudentByName
 } = require("../../services/testing-test-services-for-database-queries/student-test-database-queries-services");
-const { sampleSchool } = require("../../testing-sample-data/sample-data-testing-school-queries");
-const { sampleStudent } = require("../../testing-sample-data/sample-data-testing-student-queries");
+const { sampleSchool } = require("../integration-testing-sample-data/sample-data-testing-school-queries");
+const { sampleStudent } = require("../integration-testing-sample-data/sample-data-testing-student-queries");
 
 module.exports = () =>
   describe("Testing test service data-base queries", () => {
