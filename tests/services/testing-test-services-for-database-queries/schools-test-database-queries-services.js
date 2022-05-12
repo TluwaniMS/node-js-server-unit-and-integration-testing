@@ -12,4 +12,7 @@ const getSchoolByName = async (name) => {
   return school;
 };
 
-module.exports = { deleteSchoolByName, getSchoolByName };
+const repopulateDatabaseWithDeletedSchool = async (schoolObject) => {
+  await SchoolModel.create(schoolObject);
+};
+module.exports = { deleteSchoolByName, getSchoolByName, repopulateDatabaseWithDeletedSchool };

@@ -7,13 +7,15 @@ const {
 } = require("../../../database-queries/SchoolDBQueries");
 const {
   deleteSchoolByName,
-  getSchoolByName
+  getSchoolByName,
+  repopulateDatabaseWithDeletedSchool
 } = require("../../services/testing-test-services-for-database-queries/schools-test-database-queries-services");
 const {
   sampleSchool,
   sampleSchoolToBeUsedForByIdQueries,
   sampleSchoolForUpdateTests,
-  sampleSchoolUpdatedName
+  sampleSchoolUpdatedName,
+  sampleUpdatedSchoolDefaultProperties
 } = require("../integration-testing-sample-data/sample-data-testing-school-queries");
 const { defaultSchoolObjectMatcher } = require("../../testing-object-matchers/schools-object-property-matchers");
 
@@ -68,6 +70,13 @@ module.exports = () =>
     });
 
     describe("Testing update school by _id database query", () => {
+      afterAll(async () => {
+        await updateSchoolInformationById({
+          schoolId: sampleSchoolForUpdateTests._id,
+          ...sampleUpdatedSchoolDefaultProperties
+        });
+      });
+
       it("It should return an object that has the same name as that of the sample data object passed", async () => {
         await updateSchoolInformationById({
           schoolId: sampleSchoolForUpdateTests._id,
@@ -81,6 +90,10 @@ module.exports = () =>
     });
 
     describe("Testing delete school by _id database query", () => {
+      afterAll(async () => {
+        await repopulateDatabaseWithDeletedSchool(sampleSchoolToBeUsedForByIdQueries);
+      });
+
       it("It should return an array with 1 school object", async () => {
         await deleteSchoolById(sampleSchoolToBeUsedForByIdQueries._id);
 
