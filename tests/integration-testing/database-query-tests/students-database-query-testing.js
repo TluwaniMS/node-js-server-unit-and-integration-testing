@@ -37,7 +37,7 @@ module.exports = () =>
     });
 
     describe("Testing get all students in database, database query", () => {
-      it("It should return an array with 2 school objects", async () => {
+      it("It should return an array with 5 school objects", async () => {
         const students = await getAllStudents();
 
         expect(students).toHaveLength(5);
