@@ -9,10 +9,12 @@ const {
   sampleStudent,
   sampleStudentForUpdateTest,
   sampleStudentToBeUsedForByIdQueries,
-  sampleStudentUpdatedSurname
+  sampleStudentUpdatedSurname,
+  sampleStudentForUpdatesDefaultfields
 } = require("../integration-testing-sample-data/sample-data-testing-student-queries");
 const {
-  deleteStudentByName
+  deleteStudentByName,
+  repopulateDatabaseWithDeletedStudent
 } = require("../../services/testing-test-services-for-database-queries/student-test-database-queries-services");
 const { defaultStudentMatcher } = require("../../testing-object-matchers/students-object-property-matchers");
 
@@ -63,12 +65,21 @@ module.exports = () =>
     });
 
     describe("Testing update student by _id database query", () => {
-      it("It should return an object that has the same name as that of the sample data object passed", async () => {
+      beforeAll(async () => {
         await updateStudentInformationById({
           studentId: sampleStudentForUpdateTest._id,
           ...sampleStudentForUpdateTest.data
         });
+      });
 
+      afterAll(async () => {
+        await updateStudentInformationById({
+          studentId: sampleStudentForUpdateTest._id,
+          ...sampleStudentForUpdatesDefaultfields
+        });
+      });
+
+      it("It should return an object that has the same name as that of the sample data object passed", async () => {
         const student = await getStudentById(sampleStudentForUpdateTest._id);
 
         expect(student).toHaveProperty("surname", sampleStudentUpdatedSurname);
@@ -76,9 +87,15 @@ module.exports = () =>
     });
 
     describe("Testing delete student by _id database query", () => {
-      it("It should return an array with 4 student objects", async () => {
+      beforeAll(async () => {
         await deleteStudentById(sampleStudentToBeUsedForByIdQueries._id);
+      });
 
+      afterAll(async () => {
+        await repopulateDatabaseWithDeletedStudent(sampleStudentToBeUsedForByIdQueries)
+      });
+
+      it("It should return an array with 4 student objects", async () => {
         const students = await getAllStudents();
 
         expect(students).toHaveLength(4);

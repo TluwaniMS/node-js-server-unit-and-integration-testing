@@ -19,6 +19,15 @@ const sampleStudentForUpdateTest = {
   }
 };
 
+const sampleStudentForUpdatesDefaultfields = {
+  name: "Lufuno",
+  surname: "Sekgothe",
+  grade: 6,
+  age: 12,
+  sports: ["Netball", "Swimming"],
+  gender: "Female"
+};
+
 const sampleStudentUpdatedSurname = "Marimba";
 
 const sampleStudentToBeUsedForByIdQueries = {
@@ -35,5 +44,6 @@ module.exports = {
   sampleStudent,
   sampleStudentForUpdateTest,
   sampleStudentUpdatedSurname,
-  sampleStudentToBeUsedForByIdQueries
+  sampleStudentToBeUsedForByIdQueries,
+  sampleStudentForUpdatesDefaultfields
 };

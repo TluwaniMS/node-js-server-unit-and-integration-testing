@@ -8,8 +8,12 @@ const deleteStudentByName = async (name) => {
 
 const getStudentByName = async (name) => {
   const student = await StudentModel.findOne({ name: name });
-  
+
   return student;
 };
 
-module.exports = { deleteStudentByName, getStudentByName };
+const repopulateDatabaseWithDeletedStudent = async (studentObject) => {
+  await StudentModel.create(studentObject);
+};
+
+module.exports = { deleteStudentByName, getStudentByName, repopulateDatabaseWithDeletedStudent };
