@@ -4,12 +4,15 @@ const {
   sampleStudent,
   sampleStudentForUpdateTest,
   sampleStudentToBeUsedForByIdQueries,
-  sampleStudentUpdatedSurname
+  sampleStudentUpdatedSurname,
+  sampleStudentForUpdatesDefaultfields
 } = require("../integration-testing-sample-data/sample-data-testing-student-queries");
 const { defaultStudentMatcher } = require("../../testing-object-matchers/students-object-property-matchers");
 const {
-  deleteStudentByName
+  deleteStudentByName,
+  repopulateDatabaseWithDeletedStudent
 } = require("../../services/testing-test-services-for-database-queries/student-test-database-queries-services");
+const { updateStudentInformationById } = require("../../../database-queries/StudentDBQueries");
 
 module.exports = () =>
   describe("Testing the students end-points", () => {
@@ -17,6 +20,7 @@ module.exports = () =>
       afterAll(async () => {
         await deleteStudentByName(sampleStudent.name);
       });
+
       it("It should return a status 200 response", async () => {
         const response = await request(app).post("/api/students/create-student").send(sampleStudent);
 
@@ -71,6 +75,13 @@ module.exports = () =>
     });
 
     describe("Testing the update student information by id end-point", () => {
+      afterAll(async () => {
+        await updateStudentInformationById({
+          studentId: sampleStudentForUpdateTest._id,
+          ...sampleStudentForUpdatesDefaultfields
+        });
+      });
+
       it("It should return a status 200 response", async () => {
         const response = await request(app)
           .put(`/api/students/update-student-information-by-id/${sampleStudentForUpdateTest._id}`)
@@ -87,6 +98,10 @@ module.exports = () =>
     });
 
     describe("Testing the delete student by id end-point", () => {
+      afterAll(async () => {
+        await repopulateDatabaseWithDeletedStudent(sampleStudentToBeUsedForByIdQueries);
+      });
+
       it("It should return a status 200 response", async () => {
         const response = await request(app).delete(
           `/api/students/delete-student-by-id/${sampleStudentToBeUsedForByIdQueries._id}`
