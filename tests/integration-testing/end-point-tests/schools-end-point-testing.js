@@ -4,12 +4,15 @@ const {
   sampleSchool,
   sampleSchoolToBeUsedForByIdQueries,
   sampleSchoolForUpdateTests,
-  sampleSchoolUpdatedName
+  sampleSchoolUpdatedName,
+  sampleUpdatedSchoolDefaultProperties
 } = require("../integration-testing-sample-data/sample-data-testing-school-queries");
 const { defaultSchoolObjectMatcher } = require("../../testing-object-matchers/schools-object-property-matchers");
 const {
-  deleteSchoolByName
+  deleteSchoolByName,
+  repopulateDatabaseWithDeletedSchool
 } = require("../../services/testing-test-services-for-database-queries/schools-test-database-queries-services");
+const { updateSchoolInformationById } = require("../../../database-queries/SchoolDBQueries");
 
 module.exports = () =>
   describe("Testing the schools end-points", () => {
@@ -17,6 +20,7 @@ module.exports = () =>
       afterAll(async () => {
         await deleteSchoolByName(sampleSchool.name);
       });
+
       it("It should return a status 200 response", async () => {
         const response = await request(app).post("/api/schools/create-school").send(sampleSchool);
 
@@ -71,6 +75,13 @@ module.exports = () =>
     });
 
     describe("Testing the update school information by id end-point", () => {
+      afterAll(async () => {
+        await updateSchoolInformationById({
+          schoolId: sampleSchoolForUpdateTests._id,
+          ...sampleUpdatedSchoolDefaultProperties
+        });
+      });
+
       it("It should return a status 200 response", async () => {
         const response = await request(app)
           .put(`/api/schools/update-school-information-by-id/${sampleSchoolForUpdateTests._id}`)
@@ -87,6 +98,10 @@ module.exports = () =>
     });
 
     describe("Testing the delete school by id end-point", () => {
+      afterAll(async () => {
+        repopulateDatabaseWithDeletedSchool(sampleSchoolToBeUsedForByIdQueries);
+      });
+
       it("It should return a status 200 response", async () => {
         const response = await request(app).delete(
           `/api/schools/delete-school-by-id/${sampleSchoolToBeUsedForByIdQueries._id}`
