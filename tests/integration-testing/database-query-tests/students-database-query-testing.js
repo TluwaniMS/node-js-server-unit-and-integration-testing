@@ -12,30 +12,25 @@ const {
   sampleStudentUpdatedSurname
 } = require("../integration-testing-sample-data/sample-data-testing-student-queries");
 const {
-  deleteStudentByName,
-  getStudentByName
+  deleteStudentByName
 } = require("../../services/testing-test-services-for-database-queries/student-test-database-queries-services");
 const { defaultStudentMatcher } = require("../../testing-object-matchers/students-object-property-matchers");
 
 module.exports = () =>
   describe("Testing student database queries:", () => {
     describe("Testing database query for creating a student", () => {
+      beforeAll(async () => {
+        await createStudent(sampleStudent);
+      });
+
       afterAll(async () => {
         await deleteStudentByName(sampleStudent.name);
       });
 
       it("It should return an array with 6 students", async () => {
-        await createStudent(sampleStudent);
-
         const students = await getAllStudents();
 
         expect(students).toHaveLength(6);
-      });
-
-      it("It should return an object that matches the specified object", async () => {
-        const student = await getStudentByName(sampleStudent.name);
-
-        expect(student).toHaveProperty("surname", sampleStudent.surname);
       });
     });
 
