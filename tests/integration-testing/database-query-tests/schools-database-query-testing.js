@@ -7,7 +7,6 @@ const {
 } = require("../../../database-queries/SchoolDBQueries");
 const {
   deleteSchoolByName,
-  getSchoolByName,
   repopulateDatabaseWithDeletedSchool
 } = require("../../services/testing-test-services-for-database-queries/schools-test-database-queries-services");
 const {
@@ -22,22 +21,18 @@ const { defaultSchoolObjectMatcher } = require("../../testing-object-matchers/sc
 module.exports = () =>
   describe("Testing school database queries:", () => {
     describe("Testing database query for creating a school", () => {
+      beforeAll(async () => {
+        await createSchool(sampleSchool);
+      });
+
       afterAll(async () => {
         await deleteSchoolByName(sampleSchool.name);
       });
 
       it("It should return an array with 3 schools", async () => {
-        await createSchool(sampleSchool);
-
         const schools = await getAllSchools();
 
         expect(schools).toHaveLength(3);
-      });
-
-      it("It should return an object that matches the specified object", async () => {
-        const school = await getSchoolByName(sampleSchool.name);
-
-        expect(school).toHaveProperty("district", sampleSchool.district);
       });
     });
 
@@ -70,6 +65,13 @@ module.exports = () =>
     });
 
     describe("Testing update school by _id database query", () => {
+      beforeAll(async () => {
+        await updateSchoolInformationById({
+          schoolId: sampleSchoolForUpdateTests._id,
+          ...sampleSchoolForUpdateTests.data
+        });
+      });
+
       afterAll(async () => {
         await updateSchoolInformationById({
           schoolId: sampleSchoolForUpdateTests._id,
@@ -78,11 +80,6 @@ module.exports = () =>
       });
 
       it("It should return an object that has the same name as that of the sample data object passed", async () => {
-        await updateSchoolInformationById({
-          schoolId: sampleSchoolForUpdateTests._id,
-          ...sampleSchoolForUpdateTests.data
-        });
-
         const school = await getSchoolById(sampleSchoolForUpdateTests._id);
 
         expect(school).toHaveProperty("name", sampleSchoolUpdatedName);
@@ -94,9 +91,11 @@ module.exports = () =>
         await repopulateDatabaseWithDeletedSchool(sampleSchoolToBeUsedForByIdQueries);
       });
 
-      it("It should return an array with 1 school object", async () => {
+      beforeAll(async () => {
         await deleteSchoolById(sampleSchoolToBeUsedForByIdQueries._id);
+      });
 
+      it("It should return an array with 1 school object", async () => {
         const schools = await getAllSchools();
 
         expect(schools).toHaveLength(1);
