@@ -12,7 +12,11 @@ const {
   deleteStudentByName,
   repopulateDatabaseWithDeletedStudent
 } = require("../../services/testing-test-services-for-database-queries/student-test-database-queries-services");
-const { updateStudentInformationById } = require("../../../database-queries/StudentDBQueries");
+const {
+  updateStudentInformationById,
+  getAllStudents,
+  getStudentById
+} = require("../../../database-queries/StudentDBQueries");
 
 module.exports = () =>
   describe("Testing the students end-points", () => {
@@ -28,9 +32,9 @@ module.exports = () =>
       });
 
       it("It should return an array with 6 students", async () => {
-        const response = await request(app).get("/api/students/get-all-students");
+        const students = await getAllStudents();
 
-        expect(response.body.data).toHaveLength(6);
+        expect(students).toHaveLength(6);
       });
     });
 
@@ -91,9 +95,9 @@ module.exports = () =>
       });
 
       it("It should return an object thats has the same surname as that of the sample data object passed", async () => {
-        const response = await request(app).get(`/api/students/get-student-by-id/${sampleStudentForUpdateTest._id}`);
+        const student = await getStudentById(sampleStudentForUpdateTest._id);
 
-        expect(response.body.data).toHaveProperty("surname", sampleStudentUpdatedSurname);
+        expect(student).toHaveProperty("surname", sampleStudentUpdatedSurname);
       });
     });
 
@@ -111,9 +115,9 @@ module.exports = () =>
       });
 
       it("It should return an array with 6 students", async () => {
-        const response = await request(app).get("/api/students/get-all-students");
+        const students = await getAllStudents();
 
-        expect(response.body.data).toHaveLength(4);
+        expect(students).toHaveLength(4);
       });
     });
   });
