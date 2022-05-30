@@ -12,7 +12,11 @@ const {
   deleteSchoolByName,
   repopulateDatabaseWithDeletedSchool
 } = require("../../services/testing-test-services-for-database-queries/schools-test-database-queries-services");
-const { updateSchoolInformationById } = require("../../../database-queries/SchoolDBQueries");
+const {
+  updateSchoolInformationById,
+  getAllSchools,
+  getSchoolById
+} = require("../../../database-queries/SchoolDBQueries");
 
 module.exports = () =>
   describe("Testing the schools end-points", () => {
@@ -28,9 +32,9 @@ module.exports = () =>
       });
 
       it("It should return an array with 3 schools", async () => {
-        const response = await request(app).get("/api/schools/get-all-schools");
+        const schools = await getAllSchools();
 
-        expect(response.body.data).toHaveLength(3);
+        expect(schools).toHaveLength(3);
       });
     });
 
@@ -91,9 +95,9 @@ module.exports = () =>
       });
 
       it("It should return an object thats has the same name as that of the sample data object passed", async () => {
-        const response = await request(app).get(`/api/schools/get-school-by-id/${sampleSchoolForUpdateTests._id}`);
+        const school = await getSchoolById(sampleSchoolForUpdateTests._id);
 
-        expect(response.body.data).toHaveProperty("name", sampleSchoolUpdatedName);
+        expect(school).toHaveProperty("name", sampleSchoolUpdatedName);
       });
     });
 
@@ -111,9 +115,9 @@ module.exports = () =>
       });
 
       it("It should return an array with 1 school", async () => {
-        const response = await request(app).get("/api/schools/get-all-schools");
+        const schools = await getAllSchools();
 
-        expect(response.body.data).toHaveLength(1);
+        expect(schools).toHaveLength(1);
       });
     });
   });
