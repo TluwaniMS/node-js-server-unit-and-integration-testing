@@ -13,7 +13,6 @@ const {
   sampleSchool,
   sampleSchoolToBeUsedForByIdQueries,
   sampleSchoolForUpdateTests,
-  sampleSchoolUpdatedName,
   sampleUpdatedSchoolDefaultProperties
 } = require("../integration-testing-sample-data/sample-data-testing-school-queries");
 const { defaultSchoolObjectMatcher } = require("../../testing-object-matchers/schools-object-property-matchers");
@@ -82,7 +81,7 @@ module.exports = () =>
       it("It should return an object that has the same name as that of the sample data object passed", async () => {
         const school = await getSchoolById(sampleSchoolForUpdateTests._id);
 
-        expect(school).toHaveProperty("name", sampleSchoolUpdatedName);
+        expect(school).toHaveProperty("name", sampleSchoolForUpdateTests.data.name);
       });
     });
 

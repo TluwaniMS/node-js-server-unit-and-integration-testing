@@ -21,8 +21,6 @@ const sampleUpdatedSchoolDefaultProperties = {
   students: ["624edb425712f22ee59fd987", "624edb425712f22ee59fd989", "624edb425712f22ee59fd98b"]
 };
 
-const sampleSchoolUpdatedName = "Moria High School";
-
 const sampleSchoolToBeUsedForByIdQueries = {
   _id: "624eddc76022740b286b6be1",
   name: "Kgwadu Primary School",
@@ -34,7 +32,6 @@ const sampleSchoolToBeUsedForByIdQueries = {
 module.exports = {
   sampleSchool,
   sampleSchoolForUpdateTests,
-  sampleSchoolUpdatedName,
   sampleSchoolToBeUsedForByIdQueries,
   sampleUpdatedSchoolDefaultProperties
 };
