@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: "Schools API Service"
+  name: "Schools-API-Service"
   annotations:
    github.com/project-slug: TluwaniMS/node-js-server-unit-and-integration-testing
 spec:
