@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "Doctors-directoy"
+  annotations:
+   github.com/project-slug: TluwaniMS/node-js-server-unit-and-integration-testing
+spec:
+  type: service
+  owner: vhatwanamba
+  lifecycle: development
