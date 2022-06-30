@@ -8,3 +8,53 @@ servers:
   - url: http://localhost:5000/api
     description: This serves as a development server
 
+paths:
+  /schools/get-all-schools:
+    get:
+      summary: Get all schools in the directory
+      responses:
+        '200':
+          description: Returns an array of users.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/School'
+
+
+  /schools/get-school-by-id/{schoolId}:
+    get:
+      summary: Get a school by id in the directory
+      parameters:
+        - in: path
+          name: schoolId
+          schema:
+            type: string
+          required: true
+          description: A unique objectId to be used to identify the school
+      responses:
+        '200':
+          description: Returns an array of users.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/School'
+
+components:
+  schemas:
+    School:
+      type: object
+      properties:
+        _id: 
+          type: string
+        name:
+          type: string
+        district:
+          type: string
+        level:
+          type: string
+        students:
+          type: array
+          items:
+            type: object
