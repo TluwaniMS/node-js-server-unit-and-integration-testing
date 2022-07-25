@@ -6,7 +6,7 @@ metadata:
    github.com/project-slug: TluwaniMS/node-js-server-unit-and-integration-testing
 spec:
   type: openapi
-  owner: vhatwanamba
+  owner: "Backstage"
   lifecycle: development
   definition:
     $text: ./api-info.yaml
