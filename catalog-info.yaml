@@ -9,4 +9,4 @@ spec:
   owner: "Backstage"
   lifecycle: development
   definition:
-    $text: ./api-info.yaml
+    $text: https://avaf-reference-data.avaf-uat.bolt.270-nonprod.caas.absa.co.za/swagger-ui/index.html#/
