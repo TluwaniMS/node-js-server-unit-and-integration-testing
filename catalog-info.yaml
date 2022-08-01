@@ -9,4 +9,4 @@ spec:
   owner: "Backstage"
   lifecycle: development
   definition:
-    $text: https://avaf-reference-data.avaf-uat.bolt.270-nonprod.caas.absa.co.za/v3/api-docs/BOLT-INTERNAL-API
+    $text: ./api-info.yaml
