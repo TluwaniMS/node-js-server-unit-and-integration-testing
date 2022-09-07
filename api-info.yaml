@@ -25,6 +25,8 @@ paths:
 
   /schools/get-school-by-id/{schoolId}:
     get:
+      security:
+        - bearerAuth: []
       summary: Get a school by id in the directory
       parameters:
         - in: path
@@ -58,3 +60,8 @@ components:
           type: array
           items:
             type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
