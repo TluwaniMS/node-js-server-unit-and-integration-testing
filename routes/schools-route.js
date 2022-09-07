@@ -24,6 +24,7 @@ router.post(
 router.get(
   "/get-all-schools",
   errorHandler(async (req, res) => {
+    console.log(req.headers.authorization)
     const schools = await getAllSchools();
 
     res.status(200).send({ data: schools });
@@ -33,6 +34,7 @@ router.get(
 router.get(
   "/get-school-by-id/:schoolId",
   errorHandler(async (req, res) => {
+    console.log(req.headers.authorization)
     const { schoolId } = req.params;
 
     const school = await getSchoolById(schoolId);
