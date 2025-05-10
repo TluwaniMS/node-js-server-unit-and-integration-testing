@@ -1,5 +1,3 @@
-const getArraySize = (array) => {
+export const getArraySize = (array) => {
   return array.length;
 };
-
-module.exports = { getArraySize };

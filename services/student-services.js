@@ -1,14 +1,10 @@
-const returnRequiredStudentFields = ({ _id, name, surname, gender, grade, age }) => {
+export const returnRequiredStudentFields = ({ _id, name, surname, gender, grade, age }) => {
   return { _id, name, surname, gender, grade, age };
 };
 
-const addTotalSportsPlayedFieldToStudentObject = (studentobject, totalSportsPlayed) => {
+export const addTotalSportsPlayedFieldToStudentObject = (studentobject, totalSportsPlayed) => {
   studentobject.totalSportsPlayed = totalSportsPlayed;
 
   return studentobject;
 };
 
-module.exports = {
-  returnRequiredStudentFields,
-  addTotalSportsPlayedFieldToStudentObject
-};
