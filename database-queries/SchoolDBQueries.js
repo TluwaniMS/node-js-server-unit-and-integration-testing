@@ -1,6 +1,6 @@
-const { SchoolModel } = require("../database-models/School");
+import { SchoolModel } from "../database-models/School"
 
-const createSchool = async ({ name, district, level }) => {
+export const createSchool = async ({ name, district, level }) => {
   await SchoolModel.create({
     name: name,
     district: district,
@@ -10,34 +10,27 @@ const createSchool = async ({ name, district, level }) => {
   return `Operation completed successfully.`;
 };
 
-const getAllSchools = async () => {
+export const getAllSchools = async () => {
   const schools = await SchoolModel.find({}).populate("students");
 
   return schools;
 };
 
-const getSchoolById = async (schoolId) => {
+export const getSchoolById = async (schoolId) => {
   const school = await SchoolModel.findOne({ _id: schoolId }).populate("students");
 
   return school;
 };
 
-const updateSchoolInformationById = async ({ schoolId, name, level, district }) => {
+export const updateSchoolInformationById = async ({ schoolId, name, level, district }) => {
   await SchoolModel.updateOne({ _id: schoolId }, { name: name, district: district, level: level });
 
   return `Operation completed successfully.`;
 };
 
-const deleteSchoolById = async (schoolId) => {
+export const deleteSchoolById = async (schoolId) => {
   await SchoolModel.deleteOne({ _id: schoolId });
 
   return `Operation completed successfully.`;
 };
 
-module.exports = {
-  createSchool,
-  getAllSchools,
-  getSchoolById,
-  updateSchoolInformationById,
-  deleteSchoolById
-};

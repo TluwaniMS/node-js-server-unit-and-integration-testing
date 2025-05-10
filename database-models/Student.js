@@ -1,4 +1,4 @@
-const { model, Schema } = require("mongoose");
+import { model, Schema } from "mongoose"
 
 const StudentSchema = new Schema({
   name: { type: String, required: true },
@@ -9,6 +9,5 @@ const StudentSchema = new Schema({
   sports: [{ type: String, required: true }]
 });
 
-const StudentModel = model("Student", StudentSchema);
+export const StudentModel = model("Student", StudentSchema);
 
-module.exports = { StudentModel };

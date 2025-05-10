@@ -1,6 +1,6 @@
-const { StudentModel } = require("../database-models/Student");
+import { StudentModel } from "../database-models/Student"
 
-const createStudent = async ({ name, surname, gender, grade, sports, age }) => {
+export const createStudent = async ({ name, surname, gender, grade, sports, age }) => {
   await StudentModel.create({
     name: name,
     surname: surname,
@@ -13,19 +13,19 @@ const createStudent = async ({ name, surname, gender, grade, sports, age }) => {
   return `Operation completed successfully.`;
 };
 
-const getAllStudents = async () => {
+export const getAllStudents = async () => {
   const students = await StudentModel.find({});
 
   return students;
 };
 
-const getStudentById = async (studentId) => {
+export const getStudentById = async (studentId) => {
   const student = await StudentModel.findOne({ _id: studentId });
 
   return student;
 };
 
-const updateStudentInformationById = async ({ studentId, name, surname, gender, grade, sports, age }) => {
+export const updateStudentInformationById = async ({ studentId, name, surname, gender, grade, sports, age }) => {
   await StudentModel.updateOne(
     { _id: studentId },
     {
@@ -41,16 +41,8 @@ const updateStudentInformationById = async ({ studentId, name, surname, gender, 
   return `Operation completed successfully.`;
 };
 
-const deleteStudentById = async (studentId) => {
+export const deleteStudentById = async (studentId) => {
   await StudentModel.deleteOne({ _id: studentId });
 
   return `Operation completed successfully.`;
-};
-
-module.exports = {
-  createStudent,
-  getAllStudents,
-  getStudentById,
-  updateStudentInformationById,
-  deleteStudentById
 };

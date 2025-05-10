@@ -1,4 +1,4 @@
-const { model, Schema } = require("mongoose");
+import { model, Schema } from "mongoose"
 
 const SchoolSchema = new Schema({
   name: { type: String, required: true },
@@ -7,6 +7,4 @@ const SchoolSchema = new Schema({
   students: [{ type: Schema.Types.ObjectId, ref: "Student" }]
 });
 
-const SchoolModel = model("School", SchoolSchema);
-
-module.exports = { SchoolModel };
+export const SchoolModel = model("School", SchoolSchema);
