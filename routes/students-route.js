@@ -1,18 +1,19 @@
-const express = require("express");
-const router = express.Router();
-const { errorHandler } = require("../middleware/errorhandler");
-const {
+import express from "express"
+import { errorHandler } from "../middleware/errorhandler"
+import {
   createStudent,
   getAllStudents,
   getStudentById,
   updateStudentInformationById,
   deleteStudentById
-} = require("../database-queries/StudentDBQueries");
-const {
+} from "../database-queries/StudentDBQueries"
+import {
   returnRequiredStudentFields,
   addTotalSportsPlayedFieldToStudentObject
-} = require("../services/student-services");
-const { getArraySize } = require("../services/shared-services");
+} from "../services/student-services"
+import { getArraySize } from "../services/shared-services"
+
+export const router = express.Router();
 
 router.post(
   "/create-student",
@@ -103,4 +104,4 @@ router.delete(
   })
 );
 
-module.exports = router;
+

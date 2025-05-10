@@ -1,15 +1,16 @@
-const express = require("express");
-const router = express.Router();
-const { errorHandler } = require("../middleware/errorhandler");
-const {
+import express from "express"
+import { errorHandler } from "../middleware/errorhandler"
+import {
   getAllSchools,
   getSchoolById,
   updateSchoolInformationById,
   deleteSchoolById,
   createSchool
-} = require("../database-queries/SchoolDBQueries");
-const { returnRequiredSchoolFields, addTotalStudentsFieldToSchoolObject } = require("../services/school-services");
-const { getArraySize } = require("../services/shared-services");
+} from "../database-queries/SchoolDBQueries"
+import { returnRequiredSchoolFields, addTotalStudentsFieldToSchoolObject } from "../services/school-services"
+import { getArraySize } from "../services/shared-services"
+
+export const router = express.Router();
 
 router.post(
   "/create-school",
@@ -86,4 +87,4 @@ router.delete(
   })
 );
 
-module.exports = router;
+

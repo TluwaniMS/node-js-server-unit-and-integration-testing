@@ -1,4 +1,4 @@
-const Schools = [
+export const Schools = [
   {
     _id: "624eddc76022740b286b6be1",
     name: "Kgwadu Primary School",
@@ -70,7 +70,3 @@ const Schools = [
     students: ["624edb425712f22ee59fd98c", "624edb425712f22ee59fd98e"]
   }
 ];
-
-module.exports = {
-  Schools
-};

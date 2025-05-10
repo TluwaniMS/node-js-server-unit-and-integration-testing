@@ -1,6 +1,6 @@
-const { ErrorMessages } = require("../enumerators/error-messages");
+import { ErrorMessages } from "../enumerators/error-messages"
 
-const errorHandler = (handler) => {
+export const errorHandler = (handler) => {
   return async (req, res, next) => {
     try {
       await handler(req, res);
@@ -10,13 +10,13 @@ const errorHandler = (handler) => {
   };
 };
 
-const unknownRequests = (req, res, next) => {
+export const unknownRequests = (req, res, next) => {
   const error = new Error(ErrorMessages.badRequestErrorMessage);
   error.status = 404;
   next(error);
 };
 
-const errorResponse = (error, req, res, next) => {
+export const errorResponse = (error, req, res, next) => {
   if (error.status) {
     console.log(error);
     res.status(error.status).send({ message: error.message });
@@ -25,5 +25,3 @@ const errorResponse = (error, req, res, next) => {
     res.status(500).send({ message: ErrorMessages.internalServerErrorMessage });
   }
 };
-
-module.exports = { errorHandler, unknownRequests, errorResponse };
