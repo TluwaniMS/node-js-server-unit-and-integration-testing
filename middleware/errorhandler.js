@@ -16,7 +16,7 @@ export const unknownRequests = (req, res, next) => {
   next(error);
 };
 
-export const errorResponse = (error, req, res, next) => {
+export const errorResponse = (error, req, res, _next) => {
   if (error.status) {
     console.log(error);
     res.status(error.status).send({ message: error.message });
