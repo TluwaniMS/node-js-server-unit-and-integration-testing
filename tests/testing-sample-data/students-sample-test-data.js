@@ -1,4 +1,4 @@
-const Students = [
+export const Students = [
   {
     _id: "624edb425712f22ee59fd987",
     name: "Dean",
@@ -46,4 +46,3 @@ const Students = [
   }
 ];
 
-module.exports = { Students };
