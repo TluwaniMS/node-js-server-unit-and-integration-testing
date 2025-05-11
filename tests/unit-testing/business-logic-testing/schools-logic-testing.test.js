@@ -1,13 +1,13 @@
-const {
+import {
   addTotalStudentsFieldToSchoolObject,
   returnRequiredSchoolFields
-} = require("../../../services/school-services");
-const {
+} from "../../../services/school-services"
+import {
   sampleSchoolTobeUsedFoBusinessLogicUnitTests
-} = require("../unit-testing-sample-data/sample-school-data-for-testing-business-logic");
-const {
+} from "../unit-testing-sample-data/sample-school-data-for-testing-business-logic"
+import {
   detailedSchoolInformationObjectMatcher
-} = require("../../testing-object-matchers/schools-object-property-matchers");
+} from "../../testing-object-matchers/schools-object-property-matchers"
 
 describe("Testing school services business logic", () => {
   it("It should return an object that matches the specified object", () => {
