@@ -1,11 +1,9 @@
-const { createSchoolsSampleData } = require("./migration-script-services/schools-migration-service");
-const { createStudentsSampleData } = require("./migration-script-services/students-migration-service");
+import { createSchoolsSampleData } from './migration-script-services/schools-migration-service';
+import { createStudentsSampleData } from './migration-script-services/students-migration-service';
 
-const populateDataBaseWithSampleData = async () => {
+export const populateDataBaseWithSampleData = async () => {
   await createSchoolsSampleData();
   await createStudentsSampleData();
 
   console.log(`Database hase been successfuly populated.`);
 };
-
-module.exports = { populateDataBaseWithSampleData };

@@ -1,8 +1,8 @@
-const { connect } = require("mongoose");
+import { connect } from 'mongoose';
 
 const connectionOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
-async function connectToDataBase(dataBaseURL) {
+export async function connectToDataBase(dataBaseURL) {
   connect(dataBaseURL, connectionOptions)
     .then(() => {
       console.log(`connection to database succesfully created :)!!!`);
@@ -11,5 +11,3 @@ async function connectToDataBase(dataBaseURL) {
       console.log(`something went wrong ${error.message}`);
     });
 }
-
-module.exports = { connectToDataBase };
