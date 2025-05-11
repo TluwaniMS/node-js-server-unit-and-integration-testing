@@ -6,6 +6,7 @@ export const app = express();
 import { unknownRequests, errorResponse } from './middleware/errorhandler.js';
 import { router as studentsroute } from './routes/students-route.js';
 import { router as schoolsRoute } from './routes/schools-route.js';
+import { router as healthRoute } from './routes/health-route.js';
 dotenv.config({ path: './.env' });
 
 app.use(cors());
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 app.use('/api/students', studentsroute);
 app.use('/api/schools', schoolsRoute);
+app.use('/api/health', healthRoute);
+app.use('/', healthRoute);
 app.use(unknownRequests);
 app.use(errorResponse);
-
