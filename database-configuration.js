@@ -1,6 +1,10 @@
 import { connect } from 'mongoose';
 
-const connectionOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+const connectionOptions = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  directConnection: true,
+};
 
 export async function connectToDataBase(dataBaseURL) {
   connect(dataBaseURL, connectionOptions)
