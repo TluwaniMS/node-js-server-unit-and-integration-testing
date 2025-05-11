@@ -1,23 +1,23 @@
-const {
+import {
   createSchool,
   getAllSchools,
   getSchoolById,
   updateSchoolInformationById,
   deleteSchoolById
-} = require("../../../database-queries/SchoolDBQueries");
-const {
+} from "../../../database-queries/SchoolDBQueries"
+import {
   deleteSchoolByName,
   repopulateDatabaseWithDeletedSchool
-} = require("../../services/testing-test-services-for-database-queries/schools-test-database-queries-services");
-const {
+} from "../../services/testing-test-services-for-database-queries/schools-test-database-queries-services"
+import {
   sampleSchool,
   sampleSchoolToBeUsedForByIdQueries,
   sampleSchoolForUpdateTests,
   sampleUpdatedSchoolDefaultProperties
-} = require("../integration-testing-sample-data/sample-data-testing-school-queries");
-const { defaultSchoolObjectMatcher } = require("../../testing-object-matchers/schools-object-property-matchers");
+} from "../integration-testing-sample-data/sample-data-testing-school-queries"
+import { defaultSchoolObjectMatcher } from "../../testing-object-matchers/schools-object-property-matchers"
 
-module.exports = () =>
+export const schoolTests = () =>
   describe("Testing school database queries:", () => {
     describe("Testing database query for creating a school", () => {
       beforeAll(async () => {

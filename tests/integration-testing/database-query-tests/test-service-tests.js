@@ -1,23 +1,23 @@
-const { getAllSchools } = require("../../../database-queries/SchoolDBQueries");
-const { getAllStudents } = require("../../../database-queries/StudentDBQueries");
-const {
+import { getAllSchools } from "../../../database-queries/SchoolDBQueries"
+import { getAllStudents } from "../../../database-queries/StudentDBQueries"
+import {
   getSchoolByName,
   deleteSchoolByName,
   repopulateDatabaseWithDeletedSchool
-} = require("../../services/testing-test-services-for-database-queries/schools-test-database-queries-services");
-const {
+} from "../../services/testing-test-services-for-database-queries/schools-test-database-queries-services"
+import {
   getStudentByName,
   deleteStudentByName,
   repopulateDatabaseWithDeletedStudent
-} = require("../../services/testing-test-services-for-database-queries/student-test-database-queries-services");
-const {
+} from "../../services/testing-test-services-for-database-queries/student-test-database-queries-services"
+import {
   sampleSchoolToBeUsedForByIdQueries
-} = require("../integration-testing-sample-data/sample-data-testing-school-queries");
-const {
+} from "../integration-testing-sample-data/sample-data-testing-school-queries"
+import {
   sampleStudentToBeUsedForByIdQueries
-} = require("../integration-testing-sample-data/sample-data-testing-student-queries");
+} from "../integration-testing-sample-data/sample-data-testing-student-queries"
 
-module.exports = () =>
+export const testServiceTests = () =>
   describe("Testing test service data-base queries", () => {
     describe("Testing school testing auxiliary database queries", () => {
       describe("Testing delete school by name database query", () => {

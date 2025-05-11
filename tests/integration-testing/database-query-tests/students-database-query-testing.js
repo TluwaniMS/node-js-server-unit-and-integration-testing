@@ -1,24 +1,24 @@
-const {
+import {
   createStudent,
   getAllStudents,
   getStudentById,
   updateStudentInformationById,
   deleteStudentById
-} = require("../../../database-queries/StudentDBQueries");
-const {
+} from "../../../database-queries/StudentDBQueries"
+import {
   sampleStudent,
   sampleStudentForUpdateTest,
   sampleStudentToBeUsedForByIdQueries,
   sampleStudentUpdatedSurname,
   sampleStudentForUpdatesDefaultfields
-} = require("../integration-testing-sample-data/sample-data-testing-student-queries");
-const {
+} from "../integration-testing-sample-data/sample-data-testing-student-queries"
+import {
   deleteStudentByName,
   repopulateDatabaseWithDeletedStudent
-} = require("../../services/testing-test-services-for-database-queries/student-test-database-queries-services");
-const { defaultStudentMatcher } = require("../../testing-object-matchers/students-object-property-matchers");
+} from "../../services/testing-test-services-for-database-queries/student-test-database-queries-services"
+import { defaultStudentMatcher } from "../../testing-object-matchers/students-object-property-matchers"
 
-module.exports = () =>
+export const studentTests = () =>
   describe("Testing student database queries:", () => {
     describe("Testing database query for creating a student", () => {
       beforeAll(async () => {

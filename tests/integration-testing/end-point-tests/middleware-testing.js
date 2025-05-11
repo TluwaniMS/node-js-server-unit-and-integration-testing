@@ -1,9 +1,9 @@
-const { app } = require("../../../app");
-const request = require("supertest");
-const { sampleSchoolToBeUsedForByIdQueries } = require("../integration-testing-sample-data/sample-data-testing-school-queries");
-const { ErrorMessages } = require("../../../enumerators/error-messages");
+import { app } from "../../../app"
+import { request } from "supertest"
+import { sampleSchoolToBeUsedForByIdQueries } from "../integration-testing-sample-data/sample-data-testing-school-queries"
+import { ErrorMessages } from "../../../enumerators/error-messages"
 
-module.exports = () =>
+export const middleWareTests = () =>
   describe("Testing end-point middleware error handling", () => {
     describe("Testing internal server errors", () => {
       it("It should return a status code 500", async () => {

@@ -1,23 +1,23 @@
-const { app } = require("../../../app");
-const request = require("supertest");
-const {
+import { app } from "../../../app"
+import request from "supertest"
+import {
   sampleSchool,
   sampleSchoolToBeUsedForByIdQueries,
   sampleSchoolForUpdateTests,
   sampleUpdatedSchoolDefaultProperties
-} = require("../integration-testing-sample-data/sample-data-testing-school-queries");
-const { defaultSchoolObjectMatcher } = require("../../testing-object-matchers/schools-object-property-matchers");
-const {
+} from "../integration-testing-sample-data/sample-data-testing-school-queries"
+import { defaultSchoolObjectMatcher } from "../../testing-object-matchers/schools-object-property-matchers"
+import {
   deleteSchoolByName,
   repopulateDatabaseWithDeletedSchool
-} = require("../../services/testing-test-services-for-database-queries/schools-test-database-queries-services");
-const {
+} from "../../services/testing-test-services-for-database-queries/schools-test-database-queries-services"
+import {
   updateSchoolInformationById,
   getAllSchools,
   getSchoolById
-} = require("../../../database-queries/SchoolDBQueries");
+} from "../../../database-queries/SchoolDBQueries"
 
-module.exports = () =>
+export const schoolTests = () =>
   describe("Testing the schools end-points", () => {
     describe("Testing the create school end-point", () => {
       afterAll(async () => {
