@@ -1,4 +1,4 @@
-import { SchoolModel } from "../database-models/School"
+import { SchoolModel } from "../database-models/School.js"
 
 export const createSchool = async ({ name, district, level }) => {
   await SchoolModel.create({

@@ -1,7 +1,7 @@
-import { app } from './app';
-import { connectToDataBase } from './database-configuration';
-import { getAllStudents } from './database-queries/StudentDBQueries';
-import { populateDataBaseWithSampleData } from './main-migration-script';
+import { app } from './app.js';
+import { connectToDataBase } from './database-configuration.js';
+import { getAllStudents } from './database-queries/StudentDBQueries.js';
+import { populateDataBaseWithSampleData } from './main-migration-script.js';
 
 const PORT = process.env.PORT;
 const dataBaseURL = process.env.MONGO_URL;

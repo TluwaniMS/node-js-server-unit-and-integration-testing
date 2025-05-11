@@ -1,5 +1,5 @@
-import { SchoolModel } from "../database-models/School"
-import { Schools } from "../sample-data/schools-sample-data"
+import { SchoolModel } from "../database-models/School.js"
+import { Schools } from "../sample-data/schools-sample-data.js"
 
 export const createSchoolsSampleData = async () => {
   await SchoolModel.insertMany(Schools);

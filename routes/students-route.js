@@ -1,17 +1,17 @@
 import express from "express"
-import { errorHandler } from "../middleware/errorhandler"
+import { errorHandler } from "../middleware/errorhandler.js"
 import {
   createStudent,
   getAllStudents,
   getStudentById,
   updateStudentInformationById,
   deleteStudentById
-} from "../database-queries/StudentDBQueries"
+} from "../database-queries/StudentDBQueries.js"
 import {
   returnRequiredStudentFields,
   addTotalSportsPlayedFieldToStudentObject
-} from "../services/student-services"
-import { getArraySize } from "../services/shared-services"
+} from "../services/student-services.js"
+import { getArraySize } from "../services/shared-services.js"
 
 export const router = express.Router();
 

@@ -1,14 +1,14 @@
 import express from "express"
-import { errorHandler } from "../middleware/errorhandler"
+import { errorHandler } from "../middleware/errorhandler.js"
 import {
   getAllSchools,
   getSchoolById,
   updateSchoolInformationById,
   deleteSchoolById,
   createSchool
-} from "../database-queries/SchoolDBQueries"
-import { returnRequiredSchoolFields, addTotalStudentsFieldToSchoolObject } from "../services/school-services"
-import { getArraySize } from "../services/shared-services"
+} from "../database-queries/SchoolDBQueries.js"
+import { returnRequiredSchoolFields, addTotalStudentsFieldToSchoolObject } from "../services/school-services.js"
+import { getArraySize } from "../services/shared-services.js"
 
 export const router = express.Router();
 

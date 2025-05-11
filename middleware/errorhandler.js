@@ -1,4 +1,4 @@
-import { ErrorMessages } from "../enumerators/error-messages"
+import { ErrorMessages } from "../enumerators/error-messages.js"
 
 export const errorHandler = (handler) => {
   return async (req, res, next) => {

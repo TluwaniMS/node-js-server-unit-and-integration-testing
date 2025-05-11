@@ -1,4 +1,4 @@
-import { StudentModel } from "../database-models/Student"
+import { StudentModel } from "../database-models/Student.js"
 
 export const createStudent = async ({ name, surname, gender, grade, sports, age }) => {
   await StudentModel.create({
