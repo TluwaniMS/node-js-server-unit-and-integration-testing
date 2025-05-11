@@ -1,7 +1,7 @@
-const { connection, disconnect } = require("mongoose");
-const { createDatabaseConnectionAndPopulateDatabase } = require("./database-config-service");
+import { connection, disconnect } from 'mongoose';
+import { createDatabaseConnectionAndPopulateDatabase } from './database-config-service';
 
-const runSetupAndTearDownscripts = async () => {
+export const runSetupAndTearDownscripts = async () => {
   beforeAll(async () => {
     await createDatabaseConnectionAndPopulateDatabase();
   });
@@ -11,5 +11,3 @@ const runSetupAndTearDownscripts = async () => {
     await disconnect();
   });
 };
-
-module.exports = { runSetupAndTearDownscripts };

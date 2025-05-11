@@ -1,10 +1,9 @@
-const { SchoolModel } = require("../../../database-models/School");
-const { Schools } = require("../../testing-sample-data/schools-sample-test-data");
+import { SchoolModel } from '../../../database-models/School';
+import { Schools } from '../../testing-sample-data/schools-sample-test-data';
 
-const createTestSchoolsSampleData = async () => {
+export const createTestSchoolsSampleData = async () => {
   await SchoolModel.insertMany(Schools);
 
   console.log(`The test students migration script has run successfuly.`);
 };
 
-module.exports = { createTestSchoolsSampleData };
