@@ -10,7 +10,7 @@
     "test:unit-business": "jest -c jest.config.unit-business.cjs",
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "lint": "npx lint ."
+    "lint": "npx eslint ."
   },
   "repository": {
     "type": "git",
